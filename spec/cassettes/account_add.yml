@@ -60,3 +60,40 @@
       - keep-alive
     body: ! '{"status":"success","count":0,"type":"Account","results":null}'
     http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://api.genability.com:80/rest/beta/accounts
+    body: ! '{"accountName":"Ruby Add Account Test"}'
+    headers:
+      accept:
+      - application/json; charset=utf-8
+      user-agent:
+      - Genability API Ruby Gem
+      content-type:
+      - application/json;charset=utf-8
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 401
+      message: Unauthorized
+    headers:
+      cache-control:
+      - no-store
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Tue, 10 Mar 2015 11:27:00 GMT
+      server:
+      - Apache-Coyote/1.1
+      vary:
+      - Accept-Encoding
+      www-authenticate:
+      - Basic realm="Genability API"
+      content-length:
+      - '194'
+      connection:
+      - keep-alive
+    body: ! '{"status": "error","count": 1,"type": "Error","results": [{"code": "Unauthorized","message":
+      "The credentials were not supplied or are invalid","objectName": "request","propertyName":
+      "appId"}]}'
+    http_version: '1.1'

@@ -92,3 +92,91 @@
       - keep-alive
     body: ! '{"status":"success","count":0,"type":"Account","results":null}'
     http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :post
+    uri: http://api.genability.com:80/rest/beta/accounts
+    body: ! '{"accountName":"Ruby Account Test"}'
+    headers:
+      accept:
+      - application/json; charset=utf-8
+      user-agent:
+      - Genability API Ruby Gem
+      content-type:
+      - application/json;charset=utf-8
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 401
+      message: Unauthorized
+    headers:
+      cache-control:
+      - no-store
+      content-type:
+      - application/json;charset=ISO-8859-1
+      date:
+      - Tue, 10 Mar 2015 11:27:03 GMT
+      server:
+      - Apache-Coyote/1.1
+      vary:
+      - Accept-Encoding
+      www-authenticate:
+      - Basic realm="Genability API"
+      content-length:
+      - '194'
+      connection:
+      - keep-alive
+    body: ! '{"status": "error","count": 1,"type": "Error","results": [{"code": "Unauthorized","message":
+      "The credentials were not supplied or are invalid","objectName": "request","propertyName":
+      "appId"}]}'
+    http_version: '1.1'
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://api.genability.com:80/rest/beta/accounts/?appId=ValidAppID&appKey=ValidAppKey
+    body: 
+    headers:
+      accept:
+      - application/json; charset=utf-8
+      user-agent:
+      - Genability API Ruby Gem
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 401
+      message: !binary |-
+        VW5hdXRob3JpemVk
+    headers:
+      !binary "Y2FjaGUtY29udHJvbA==":
+      - !binary |-
+        bm8tc3RvcmU=
+      !binary "Y29udGVudC1lbmNvZGluZw==":
+      - !binary |-
+        Z3ppcA==
+      !binary "Y29udGVudC10eXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjtjaGFyc2V0PUlTTy04ODU5LTE=
+      !binary "ZGF0ZQ==":
+      - !binary |-
+        VHVlLCAxMCBNYXIgMjAxNSAxMToyNzowNCBHTVQ=
+      !binary "c2VydmVy":
+      - !binary |-
+        QXBhY2hlLUNveW90ZS8xLjE=
+      !binary "dmFyeQ==":
+      - !binary |-
+        QWNjZXB0LUVuY29kaW5n
+      !binary "d3d3LWF1dGhlbnRpY2F0ZQ==":
+      - !binary |-
+        QmFzaWMgcmVhbG09IkdlbmFiaWxpdHkgQVBJIg==
+      !binary "dHJhbnNmZXItZW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+      !binary "Y29ubmVjdGlvbg==":
+      - !binary |-
+        a2VlcC1hbGl2ZQ==
+    body: !binary |-
+      H4sIAAAAAAAAAzSMMQ7CMBAEv2K5pqGlp6ChggpRHPGKGDk+c3cGhSh/x4mg
+      nZndyauRVfU75yHC4je+45qtge3G21iwqP1PCbQmW+rL1LqwynOmaj1L/CC0
+      ZoAq3Vdz6uE6QUC2SEndGwKX2ZzWUlJEcCyOGov5RSkua7490NmRhvVA8KxQ
+      a7wIF4iNf0OlHIKfr/MXAAD//wMAgMw8VcIAAAA=
+    http_version: '1.1'
